@@ -38,4 +38,8 @@ app.UseEndpoints(endpoints => {
     endpoints.MapGraphQL();
 });
 
+app.UseGraphQLVoyager(new GraphQL.Server.Ui.Voyager.VoyagerOptions() {
+    GraphQLEndPoint = "/graphql"
+}, "/graphql-voyager");
+
 app.Run();
