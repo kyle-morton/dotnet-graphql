@@ -1,4 +1,5 @@
 using CommanderGQL.Data;
+using CommanderGQL.GraphQL;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppDbContext>(options => {
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
+
+// GQL Setup
+builder.Services.AddGraphQLServer().AddQueryType<Query>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -26,6 +30,12 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+// app.MapControllers();
+
+app.UseRouting();
+app.UseEndpoints(endpoints => {
+    endpoints.MapControllers();
+    endpoints.MapGraphQL();
+});
 
 app.Run();
