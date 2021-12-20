@@ -10,7 +10,8 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(options => {
 });
 
 // GQL Setup
-builder.Services.AddGraphQLServer()
+builder.Services
+    .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddType<PlatformType>()
     .AddProjections()
