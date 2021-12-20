@@ -14,6 +14,7 @@ builder.Services
     .AddGraphQLServer()
     .AddQueryType<Query>()
     .AddType<PlatformType>()
+    .AddType<CommandType>()
     .AddProjections()
     .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = builder.Environment.IsDevelopment());
 
