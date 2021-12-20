@@ -10,8 +10,11 @@ builder.Services.AddPooledDbContextFactory<AppDbContext>(options => {
 });
 
 // GQL Setup
-builder.Services.AddGraphQLServer().AddQueryType<Query>()
-    .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = builder.Environment.IsDevelopment());  ;
+builder.Services.AddGraphQLServer()
+    .AddQueryType<Query>()
+    .AddType<PlatformType>()
+    .AddProjections()
+    .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = builder.Environment.IsDevelopment());
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
