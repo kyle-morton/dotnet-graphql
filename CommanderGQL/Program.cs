@@ -15,7 +15,8 @@ builder.Services
     .AddQueryType<Query>()
     .AddType<PlatformType>()
     .AddType<CommandType>()
-    .AddProjections()
+    .AddFiltering()
+    .AddSorting()
     .ModifyRequestOptions(opt => opt.IncludeExceptionDetails = builder.Environment.IsDevelopment());
 
 builder.Services.AddControllers();
