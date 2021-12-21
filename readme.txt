@@ -1,0 +1,1 @@
+To test subscriptions, use banana cake pop tool at https://localhost:7071/graphql/. Type in subscription, then add a platform in insomnia to see it pop-up in the results of BCP
